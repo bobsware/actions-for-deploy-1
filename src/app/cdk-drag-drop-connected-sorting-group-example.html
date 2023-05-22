@@ -1,0 +1,222 @@
+<div class="colum-header-container">
+  <div class="column-header">
+    <mat-icon class="to-do">notes</mat-icon>
+    <div>To Do</div>
+  </div>
+  <div class="column-header">
+    <mat-icon class="doing material-icons-outlined">pending</mat-icon>
+    <div>In Progress</div>
+  </div>
+  <div class="column-header">
+    <mat-icon class="done material-icons-outlined">check</mat-icon>
+    <div>Done</div>
+  </div>
+</div>
+<cdk-accordion class="example-accordion" multi>
+  <cdk-accordion-item role="button" #accordionItem0="cdkAccordionItem" expanded>
+    <div
+      class="example-accordion-item-header"
+      (click)="accordionItem0.toggle()"
+    >
+      <mat-icon
+        >{{accordionItem0.expanded ? 'expand_more' : 'chevron_right'}}</mat-icon
+      >
+      Kpi 1
+      <span class="item-count"
+        >- {{todo.length + doing.length + done.length + ' item' + (todo.length +
+        doing.length + done.length > 1 ? 's' : '')}}</span
+      >
+    </div>
+    <div class="swimlane" cdkDropListGroup role="region">
+      <div
+        class="example-container"
+        *ngIf="accordionItem0.expanded; else closed"
+      >
+        <div
+          cdkDropList
+          [cdkDropListData]="todo"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          [style.display]="accordionItem0.expanded ? '' : 'none'"
+        >
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>
+            <div class="action-name">{{item.name}}</div>
+            <div class="action-description">{{item.description}}</div>
+            <div class="action-metadata">
+              <mat-chip-list>
+                <mat-chip>Talent & Culture</mat-chip>
+              </mat-chip-list>
+              <div class="action-asignee" *ngIf="item.user">
+                {{getInitials(item.user)}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #closed>
+        <div class="line"></div>
+      </ng-template>
+
+      <div
+        class="example-container"
+        *ngIf="accordionItem0.expanded; else closed"
+      >
+        <div
+          cdkDropList
+          [cdkDropListData]="doing"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of doing" cdkDrag>
+            <div class="action-name">{{item.name}}</div>
+            <div class="action-description">{{item.description}}</div>
+            <div class="action-metadata">
+              <mat-chip-list>
+                <mat-chip>Talent & Culture</mat-chip>
+              </mat-chip-list>
+              <div class="action-asignee" *ngIf="item.user">
+                {{getInitials(item.user)}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #closed>
+        <div class="line"></div>
+      </ng-template>
+
+      <div
+        class="example-container"
+        *ngIf="accordionItem0.expanded; else closed"
+      >
+        <div
+          cdkDropList
+          [cdkDropListData]="done"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of done" cdkDrag>
+            <div class="action-name">{{item.name}}</div>
+            <div class="action-description">{{item.description}}</div>
+            <div class="action-metadata">
+              <mat-chip-list>
+                <mat-chip>Talent & Culture</mat-chip>
+              </mat-chip-list>
+              <div class="action-asignee" *ngIf="item.user">
+                {{getInitials(item.user)}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #closed>
+        <div class="line"></div>
+      </ng-template>
+    </div>
+  </cdk-accordion-item>
+  <cdk-accordion-item role="button" #accordionItem1="cdkAccordionItem" expanded>
+    <div
+      class="example-accordion-item-header"
+      (click)="accordionItem1.toggle()"
+    >
+      <mat-icon
+        >{{accordionItem1.expanded ? 'expand_more' : 'chevron_right'}}</mat-icon
+      >
+      Kpi 2
+      <span class="item-count"
+        >- {{todo1.length + doing1.length + done1.length + ' item' +
+        (todo1.length + doing1.length + done1.length > 1 ? 's' : '')}}</span
+      >
+    </div>
+    <div class="swimlane" cdkDropListGroup role="region">
+      <div
+        class="example-container"
+        *ngIf="accordionItem1.expanded; else closed"
+      >
+        <div
+          cdkDropList
+          [cdkDropListData]="todo1"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          [style.display]="accordionItem1.expanded ? '' : 'none'"
+        >
+          <div class="example-box" *ngFor="let item of todo1" cdkDrag>
+            <div class="action-name">{{item.name}}</div>
+            <div class="action-description">{{item.description}}</div>
+            <div class="action-metadata">
+              <mat-chip-list>
+                <mat-chip>Talent & Culture</mat-chip>
+              </mat-chip-list>
+              <div class="action-asignee" *ngIf="item.user">
+                {{getInitials(item.user)}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #closed>
+        <div class="line"></div>
+      </ng-template>
+
+      <div
+        class="example-container"
+        *ngIf="accordionItem1.expanded; else closed"
+      >
+        <div
+          cdkDropList
+          [cdkDropListData]="doing1"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of doing1" cdkDrag>
+            <div class="action-name">{{item.name}}</div>
+            <div class="action-description">{{item.description}}</div>
+            <div class="action-metadata">
+              <mat-chip-list>
+                <mat-chip>Talent & Culture</mat-chip>
+              </mat-chip-list>
+              <div class="action-asignee" *ngIf="item.user">
+                {{getInitials(item.user)}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #closed>
+        <div class="line"></div>
+      </ng-template>
+
+      <div
+        class="example-container"
+        *ngIf="accordionItem1.expanded; else closed"
+      >
+        <div
+          cdkDropList
+          [cdkDropListData]="done1"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of done1" cdkDrag>
+            <div class="action-name">{{item.name}}</div>
+            <div class="action-description">{{item.description}}</div>
+            <div class="action-metadata">
+              <mat-chip-list>
+                <mat-chip>Talent & Culture</mat-chip>
+              </mat-chip-list>
+              <div class="action-asignee" *ngIf="item.user">
+                {{getInitials(item.user)}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #closed>
+        <div class="line"></div>
+      </ng-template>
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>
+
+<!-- Copyright 2023 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
